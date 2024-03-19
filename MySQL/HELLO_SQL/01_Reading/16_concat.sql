@@ -1,0 +1,2 @@
+-- get a concatenated column made of two data columns: name and surname from the table users. The resultant table is renamed for visualization purposes.
+SELECT CONCAT('Nombre: ', name, ' Apellidos:  ', surname) AS 'NOMBRE COMPLETO' FROM hello_sql.users
