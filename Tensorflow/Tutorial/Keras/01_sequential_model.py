@@ -43,6 +43,12 @@ layer3 = layers.Dense(4, activation='relu', name='layer3')
 x = tf.ones((3,3))
 y = layer3(layer2(layer1(x)))
 
+
+#check the sequential model structure
+model.layers
+
+
+
 """
 Do not use a Sequential model when:
 - multiple inputs and outputs
