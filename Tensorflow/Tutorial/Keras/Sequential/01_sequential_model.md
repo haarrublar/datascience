@@ -100,30 +100,34 @@ This is done with the `keras.Input()` method within the Sequential model before 
 
 1. `keras.Input()`
 
-The `keras.Input(shape=(Number,))` statement creates an input tensor with a shape of (None, 4) where `None` dimension represents the batch size set to `None` indicating that the model can accept inputs with any batch size.
+    The `keras.Input(shape=(Number,))` statement creates an input tensor with a shape of (None, 4) where `None` dimension represents the batch size set to `None` indicating that the model can accept inputs with any batch size.
 
-```python
-model = keras.Sequential()
-model.add(keras.Input(shape=(4,)))
-model.add(layers.Dense(2, activation="relu"))
+    ```python
+    model = keras.Sequential()
+    model.add(keras.Input(shape=(4,)))
+    model.add(layers.Dense(2, activation="relu"))
 
-model.summary()
-```
+    model.summary()
+    ```
 
-But, the `keras.Input()` object is not display in the model structure i.e. it is not part of the model since it is not a layer:
+    But, the `keras.Input()` object is not display in the model structure i.e. it is not part of the model since it is not a layer:
 
-```python
-model.layers
-```
+    ```python
+    model.layers
+    ```
 
 2. `input_shape`
 
-```python
-model = keras.Sequential()
-model.add(layers.Dense(2, activation="relu", input_shape=(4,)))
+    ```python
+    model = keras.Sequential()
+    model.add(layers.Dense(2, activation="relu", input_shape=(4,)))
 
-model.summary()
-```
+    model.summary()
+    ```
+
+    Before starting the debugging workflow let's make an introduction regarding to the `Convolution`not only in Machine Learning but in general Maths. For doing so, just jump out to the Convolution section.
+
+
 
 ### Do not use a Sequential model when:
 
