@@ -2,18 +2,19 @@ import re
 import nltk
 
 class DataCleaner:
-    def __init__(self):
+    def __init__(self, stopwords=True):
         try:
             self.stop = nltk.corpus.stopwords.words('english')
-            self.pattern = self.construct_pattern()
+            self.pattern = self.construct_pattern(stopwords)
         except Exception as e:
             print(f"Error initializing stopwords: {e}")
             self.stop = []
             self.pattern = ""
 
-    def construct_pattern(self):
+    def construct_pattern(self, stopwords=True):
         try:
-            return r'\s*\b(?:' + '|'.join(map(re.escape, self.stop)) + r')\b|[^\w\s]'
+            stopwords_pattern = r'\s*\b(?:' + '|'.join(map(re.escape, self.stop)) + r')\b' if stopwords else ''
+            return stopwords_pattern + r'|[^\w\s]'
         except Exception as e:
             print(f"Error constructing pattern: {e}")
             return ""
@@ -23,8 +24,7 @@ class DataCleaner:
             clean_data = [None]
             for _ in range(1):
                 clean_data[0] = text.lower().split('\n')
-                clean_data[0] = list(map(lambda x: re.sub(self.pattern, '', 
-                                                          x.replace("'", '"')), clean_data[0]))
+                clean_data[0] = list(map(lambda x: re.sub(self.pattern, '', x), clean_data[0]))
             return clean_data[0]
         except AttributeError:
             print("Error: Input text is not a string.")
